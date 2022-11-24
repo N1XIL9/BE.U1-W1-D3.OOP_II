@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace BE.U1_W1_D3.OOP_II
 {
     internal class ContoCorrente
+
+        // PROPRIETA'
     {
         private string _correntista;
 
@@ -33,25 +36,36 @@ namespace BE.U1_W1_D3.OOP_II
         }
 
 
+        // METODI
+
+
         public void menuIniziale()
         {
+            // INIZIO MENU
+
             Console.WriteLine("");
-            Console.WriteLine("==============================");
-            Console.WriteLine("===== BANCA CENTRALE UE ======");
-            Console.WriteLine("==============================");
+            Console.WriteLine("===========================================");
+            Console.WriteLine("===== B A N CA  C E N T R A L E  U E ======");
+            Console.WriteLine("===========================================");
             Console.WriteLine("");
 
 
             Console.WriteLine("");
-            Console.WriteLine("===== BENVENUTO NELLA BCE ====");
+            Console.WriteLine("============ B E N V E N U TO =============");
             Console.WriteLine("");
             Console.WriteLine("SCEGLI UN OPZIONE :");
+            Console.WriteLine("");
             Console.WriteLine("1. APRI UN CONTO CORRENTE");
             Console.WriteLine("2. FAI UN PRELIEVO");
             Console.WriteLine("3. FAI UN VERSAMENTO");
+            Console.WriteLine("4. ESCI");
+
             Console.WriteLine("");
 
+            // DICHIARARE VARIABILE PER POTER FARE LA SCELTA 
             int scelta = int.Parse(Console.ReadLine());
+
+            // CON UN COSTRUTTO IF - ESLE
             if (scelta == 1)
             {
                 apriConto();
@@ -63,6 +77,9 @@ namespace BE.U1_W1_D3.OOP_II
             else if (scelta == 3)
             {
                 versamento();
+            }else if (scelta == 4)
+            {
+                close();
             }
             else
             {
@@ -70,6 +87,7 @@ namespace BE.U1_W1_D3.OOP_II
                 menuIniziale();
             }
         }
+            // FINE MENU
     
         public void apriConto()
         {
@@ -108,8 +126,8 @@ namespace BE.U1_W1_D3.OOP_II
                 Console.WriteLine($"IL TUO SALDO AGGIORNATO E' DI EURO: {Saldo}");
                 menuIniziale();
 
-                
-            }else { Console.WriteLine("APRI IL CONTO");
+              
+            }else { Console.WriteLine("ATTENZIONE, DEVI PRIMA APRIRE UN NUOVO CONTO");
                 menuIniziale();
             };
             Console.WriteLine("");
@@ -143,11 +161,18 @@ namespace BE.U1_W1_D3.OOP_II
                 menuIniziale();
             };
             Console.WriteLine("");
+        }
 
+        // PER CHIUDERE L'APPLICAZIONE
+        public void close()
+        {
+            Console.WriteLine("========= A R R I V E D E R C I ========");
+            Thread.Sleep(6000);
 
+            Environment.Exit(0);
         }
     }
-
+  
 }
 
 
